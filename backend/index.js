@@ -8,7 +8,9 @@ const app = express();
 const PORT = 3000; // or your preferred port
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://portfolio-backend-341o.onrender.com',
+}));
 app.use(bodyParser.json());
 
 // Route to handle form submission
@@ -45,7 +47,15 @@ try{
     console.log("INFO ",info);
 }catch(err){
     console.log(err)
+    return res.status(400).json({
+        success:false,
+        message:"Error while submitting form"
+    })
 }
+res.status(200).json({
+    success:true,
+    message:"Form submitted successfully"
+})
 });
 
 app.listen(PORT, () => {
