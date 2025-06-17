@@ -104,7 +104,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     };
 
     // Send POST request to backend
-    fetch("http://localhost:3000/contact", {
+    fetch("https://portfolio-backend-341o.onrender.com/contact", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
