@@ -84,3 +84,41 @@ arrowLeft.addEventListener('click',()=>{
     }
     activePortfolio();
 })
+
+
+//form data handling
+
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Get form values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Prepare form data
+    const formData = {
+        name,
+        email,
+        message
+    };
+
+    // Send POST request to backend
+    fetch("http://localhost:3000/contact", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message); // Success message
+        document.getElementById("contactForm").reset(); // Clear form
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        // alert("Something went wrong. Please try again.");
+    });
+});
+
