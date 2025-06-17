@@ -5,12 +5,13 @@ const cors = require("cors");
 const fs = require("fs");
 require('dotenv').config();
 const app = express();
-const PORT = 3000; // or your preferred port
+const PORT = process.env.PORT; // or your preferred port
 
 // Middleware
 app.use(cors({
   origin: 'https://portfolio-backend-341o.onrender.com',
 }));
+// app.use(cors())
 app.use(bodyParser.json());
 
 // Route to handle form submission
